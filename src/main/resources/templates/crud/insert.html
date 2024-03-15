@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>환자의 정보를 입력해주세요.</h1>
+<form action="/patient/insert" method="post">
+  <label>이름 : </label><input type="text" name="patientName"><br>
+  <label>나이 : </label><input type="text" name="patientAge"><br>
+  <label>성별 : </label><input type="text" name="patientGender"><br>
+  <label>핸드폰 번호 : </label><input type="text" name="patientPhone"><br>
+  <label>이메일 : </label><input type="text" name="patientEmail"><br>
+  <label>아픈 이유 : </label><input type="text" name="patientSick"><br>
+  <label>입원 여부 : </label><input type="text" name="patientAdmission"><br>
+  <label>진료과 : </label>
+  <select name="departmentCode" id="departmentCode">
+  </select><br>
+  <input type="submit" value="환자 정보 추가하기">
+</form>
+<script>
+  fetch("/patient/department")
+  .then(res=>res.json())
+  .then(data=>{
+    console.log(data)
+    const $departmentCode = document.querySelector("#departmentCode");
+    data.forEach(category=>{
+      const $option = document.createElement("option");
+      $option.innerText = category.departmentName;
+      $option.value = category.departmentCode;
+      $departmentCode.appendChild($option);
+    })
+  })
+</script>
+</body>
+</html>

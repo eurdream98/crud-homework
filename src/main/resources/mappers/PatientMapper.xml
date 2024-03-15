@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ohgiraffers.crud.hospital.model.dao.PatientMapper">
+<select id="selectAllPatient" resultType="com.ohgiraffers.crud.hospital.model.dto.PatientDTO">
+    SELECT
+        patient_code,
+        patient_name,
+        patient_age,
+        patient_gender,
+        patient_phone,
+        patient_email,
+        patient_sick,
+        patient_admission,
+        department_code
+    FROM
+        tbl_patient
+</select>
+
+    <insert id="insertPatient" parameterType="com.ohgiraffers.crud.hospital.model.dto.PatientDTO">
+        INSERT INTO
+            tbl_patient(
+                patient_name,
+                patient_age,
+                patient_gender,
+                patient_phone,
+                patient_email,
+                patient_sick,
+                patient_admission,
+                department_code
+        )
+        VALUES
+            (
+                    #{patientName},
+                    #{patientAge},
+                    #{patientGender},
+                    #{patientPhone},
+                    #{patientEmail},
+                    #{patientSick},
+                    #{patientAdmission},
+                    #{departmentCode}
+            )
+    </insert>
+    <select id="bringDepartment" parameterType="com.ohgiraffers.crud.hospital.model.dto.DepartmentDTO">
+        SELECT
+            department_code,
+            department_name
+        FROM
+            tbl_department
+    </select>
+</mapper>
