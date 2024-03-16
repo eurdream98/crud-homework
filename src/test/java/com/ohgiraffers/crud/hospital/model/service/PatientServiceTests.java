@@ -48,4 +48,28 @@ public class PatientServiceTests {
 
         assertDoesNotThrow(() -> patientService.insertPatient(patientDTO));
     }
+
+    @Test
+    @Transactional
+    public void 환자_코드로_환자_정보_조회_테스트(){
+        PatientDTO patientDTO = patientService.selectOne(5);
+        assertNotNull(patientDTO);
+    }
+
+    @Test
+    @Transactional
+    public void 환자_코드로_환자_정보_수정_테스트(){
+        PatientDTO patientDTO= new PatientDTO();
+        patientDTO.setPatientCode(7);
+//        patientDTO.set
+        patientDTO.setPatientName("햄스터");
+        patientDTO.setPatientAge(7);
+        assertDoesNotThrow(() -> patientService.updateOne(patientDTO));
+    }
+
+    @Test
+    @Transactional
+    public void 환자_코드로_환자_정보_삭제_테스트(){
+        assertDoesNotThrow(() -> patientService.deleteOne(3));
+    }
 }
