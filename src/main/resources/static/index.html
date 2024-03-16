@@ -31,9 +31,10 @@
     <label>수정할 나이 : </label><input type="number" name="patientAge"/>
     <button type="submit">환자 정보 수정하기</button>
 </form>
-<script>
-    const $message = `[[${message}]]`;
-    if($message) alert($message);
-</script>
+<h3>환자 코드로 환자 정보 삭제하기</h3>
+<form action="/patient/deleteOne" method="post">
+    <label>환자 코드 : </label><input type="number" name="patientCode"/>
+    <button type="submit">환자 코드로 환자 정보 삭제하기</button>
+</form>
 </body>
 </html>

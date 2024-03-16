@@ -5,6 +5,7 @@ import com.ohgiraffers.crud.hospital.model.dao.PatientMapper;
 import com.ohgiraffers.crud.hospital.model.dto.PatientDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.event.TransactionalEventListener;
 
 import java.util.List;
 
@@ -34,5 +35,9 @@ public class PatientService{
 @Transactional
     public void updateOne(PatientDTO patientDTO) {
          patientMapper.updateOne(patientDTO);
+    }
+@Transactional
+    public void deleteOne(int patientCode) {
+        patientMapper.deleteOne(patientCode);
     }
 }

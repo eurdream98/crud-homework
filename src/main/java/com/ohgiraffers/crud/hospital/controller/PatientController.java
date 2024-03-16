@@ -88,4 +88,11 @@ public class PatientController {
         System.out.println(patientDTO);
         return"redirect:/patient/selectAll";
     }
+
+    @PostMapping("/deleteOne")
+    public String deleteOne(int patientCode,RedirectAttributes rttr,Locale locale){
+        patientService.deleteOne(patientCode);
+        rttr.addFlashAttribute("message",messageSource.getMessage("delete",null,locale));
+        return "redirect:/patient/selectAll";
+    }
 }

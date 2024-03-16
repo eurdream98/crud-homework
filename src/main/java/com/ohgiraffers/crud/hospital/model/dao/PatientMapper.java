@@ -18,4 +18,6 @@ public interface PatientMapper {
     PatientDTO selectOne(int patientCode);
 
     void updateOne(PatientDTO patientDTO);
+
+    void deleteOne(int patientCode);
 }

@@ -64,4 +64,10 @@
         WHERE
             patient_code=#{patientCode}
     </update>
+    <delete id="deleteOne">
+        DELETE FROM
+                   tbl_patient
+        WHERE
+            patient_code = #{patientCode}
+    </delete>
 </mapper>
