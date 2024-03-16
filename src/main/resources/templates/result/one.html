@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+  <th th:text="환자코드"></th>
+  <th th:text="환자이름"></th>
+  <th th:text="환자나이"></th>
+  <th th:text="환자성별"></th>
+  <th th:text="환자휴대폰번호"></th>
+  <th th:text="환자이메일"></th>
+  <th th:text="환자아픈이유"></th>
+  <th th:text="환자입원여부"></th>
+  <th th:text="환자진료과"></th>
+  <tr th:each="one : ${patient}">
+    <td th:text="${one.patientCode}"></td>
+    <td th:text="${one.patientName}"></td>
+    <td th:text="${one.patientAge}"></td>
+    <td th:text="${one.patientGender}"></td>
+    <td th:text="${one.patientPhone}"></td>
+    <td th:text="${one.patientEmail}"></td>
+    <td th:text="${one.patientSick}"></td>
+    <td th:text="${one.patientAdmission}"></td>
+    <td th:text="${one.departmentCode}"></td>
+  </tr>
+  </th>
+</table>
+</body>
+</html>

@@ -3,12 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>index</title>
+
 </head>
 <body>
 <div th:replace="common/header"></div>
+<h1>로그인</h1>
+<form action="/patient/login" method="post">
+    <label>이름 : </label>
+    <input type="text" name="name"/>
+    <label>비밀번호 : </label>
+    <input type="password" name="pw"/>
+    <input type="submit" value="로그인"/>
+</form>
 <h3>환자 전체 조회하기</h3>
 <button onclick="location.href='patient/selectAll'">환자 전체 조회</button>
+<h3>환자 정보 추가하기</h3>
 <button onclick="location.href='patient/insert'">환자 정보 추가</button>
-
+<h3>환자 코드로 환자 정보 조회하기</h3>
+<form action="/patient/selectOne" method="post">
+    <label>환자 코드 : </label><input type="number" name="patientCode"/>
+    <button type="submit">환자 코드로 환자 정보 조회하기</button>
+</form>
+<h3>환자 정보 수정하기</h3>
+<form action="/patient/updateOne" method="post">
+    <label>정보를 수정할 환자 코드 : </label><input type="number" name="patientCode"/>
+    <label>수정할 이름 : </label><input type="text" name="patientName"/>
+    <label>수정할 나이 : </label><input type="number" name="patientAge"/>
+    <button type="submit">환자 정보 수정하기</button>
+</form>
+<script>
+    const $message = `[[${message}]]`;
+    if($message) alert($message);
+</script>
 </body>
 </html>

@@ -27,4 +27,12 @@ public class PatientService{
     public List<DepartmentDTO> bringDepartment() {
         return patientMapper.bringDepartment();
     }
+
+    public PatientDTO selectOne(int patientCode) {
+        return patientMapper.selectOne(patientCode);
+    }
+@Transactional
+    public void updateOne(PatientDTO patientDTO) {
+         patientMapper.updateOne(patientDTO);
+    }
 }

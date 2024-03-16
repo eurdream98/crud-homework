@@ -14,4 +14,8 @@ public interface PatientMapper {
     void insertPatient(PatientDTO patientDTO);
 
     List<DepartmentDTO> bringDepartment();
+
+    PatientDTO selectOne(int patientCode);
+
+    void updateOne(PatientDTO patientDTO);
 }

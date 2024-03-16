@@ -10,9 +10,11 @@ import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/patient")
@@ -55,5 +57,35 @@ public class PatientController {
         logger.error("patientDTO : {}",patientDTO);
         rttr.addFlashAttribute("message",messageSource.getMessage("success",null,locale));
         return "redirect:/patient/selectAll";
+    }
+    @GetMapping("/loginResult")
+    public void loginResult(){
+    }
+    @PostMapping("/login")
+    public String login(RedirectAttributes rttr,@RequestParam("name") String name){
+        System.out.println(name);
+        rttr.addFlashAttribute("name",name);
+        return "redirect:/patient/loginResult";
+    }
+    @GetMapping("/name")
+    public @ResponseBody List<PatientDTO> bringPatient(){
+        return patientService.selectAllPatient();
+    }
+
+    @PostMapping("/selectOne")
+    public ModelAndView selectOne(ModelAndView mv,int patientCode){
+        PatientDTO patient = patientService.selectOne(patientCode);
+        mv.addObject("patient",patient);
+        mv.setViewName("/result/one");
+        return mv;
+    }
+
+    @PostMapping("/updateOne")
+    public String updateOne(PatientDTO patientDTO,RedirectAttributes rttr,Locale locale){
+        patientService.updateOne(patientDTO);
+        String message = messageSource.getMessage("update",null,locale);
+        rttr.addFlashAttribute("message",message);
+        System.out.println(patientDTO);
+        return"redirect:/patient/selectAll";
     }
 }

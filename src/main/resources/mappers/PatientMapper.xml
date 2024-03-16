@@ -48,4 +48,20 @@
         FROM
             tbl_department
     </select>
+
+    <select id="selectOne" parameterType="com.ohgiraffers.crud.hospital.model.dto.PatientDTO">
+        SELECT
+            *
+        FROM
+            tbl_patient
+        WHERE
+            patient_code=#{patientCode}
+    </select>
+    <update id="updateOne">
+        UPDATE tbl_patient
+        SET patient_name= #{patientName},
+            patient_age=#{patientAge}
+        WHERE
+            patient_code=#{patientCode}
+    </update>
 </mapper>
